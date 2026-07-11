@@ -9,8 +9,10 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <article className="max-w-2xl">
-      <h1 className="text-2xl font-light uppercase tracking-[0.2em]">About</h1>
-      <div className="mt-8 space-y-6 leading-relaxed text-neutral-700">
+      <h1 className="text-3xl font-normal uppercase tracking-[0.2em] text-neutral-900 dark:text-neutral-100">
+        About
+      </h1>
+      <div className="mt-8 space-y-6 text-base leading-relaxed text-neutral-800 sm:text-lg dark:text-neutral-200">
         <p>
           Cenmill is a design, build, and development firm serving the greater
           Los Angeles area. Founded by Artem Golestian in 2009, the studio
