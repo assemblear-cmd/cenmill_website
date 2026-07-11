@@ -1,8 +1,8 @@
-// The site is served from https://<user>.github.io/cenmill_website/ in production,
-// but from the domain root in local dev and in Onlook — so the basePath is applied
-// only when building inside GitHub Actions.
-const isGitHubActions = process.env.GITHUB_ACTIONS === "true";
-const basePath = isGitHubActions ? "/cenmill_website" : "";
+// GitHub Pages serves this site at the ROOT of the custom domain (expresscarwash.cl),
+// so no basePath is needed anywhere. If the custom domain is ever removed and the site
+// goes back to https://<user>.github.io/cenmill_website/, restore the conditional:
+//   const basePath = process.env.GITHUB_ACTIONS === "true" ? "/cenmill_website" : "";
+const basePath = "";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

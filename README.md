@@ -46,7 +46,7 @@ npm run build
 
 Pages должен быть включён в настройках репозитория: **Settings → Pages → Source: GitHub Actions**.
 
-`basePath`/`assetPrefix` (`/cenmill_website`) применяются только при сборке в CI (по переменной `GITHUB_ACTIONS`); локально и в Onlook сайт работает от корня домена.
+К репозиторию привязан custom domain (**expresscarwash.cl**), поэтому сайт живёт в корне домена и `basePath` не нужен. Если отвязать домен и вернуться на `https://<user>.github.io/cenmill_website/`, верните условный `basePath` в `next.config.js` (шаблон — в комментарии внутри файла).
 
 ## Подключение к Onlook
 
