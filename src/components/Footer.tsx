@@ -6,20 +6,20 @@ export default function Footer() {
       <div className="mx-auto w-full max-w-6xl px-6 py-12 sm:px-8">
         <div className="flex flex-col gap-8 text-sm text-neutral-500 sm:flex-row sm:items-start sm:justify-between">
           <address className="not-italic leading-relaxed">
-            1040 Tenth Avenue, Suite 300
+            2551 North Verdugo Road
             <br />
-            San Diego, CA 92101
+            Glendale, California
           </address>
           <div className="leading-relaxed">
-            <a href="tel:+16195550148" className="transition-colors hover:text-neutral-900">
-              +1 (619) 555-0148
+            <a href="tel:+18186962005" className="transition-colors hover:text-neutral-900">
+              818.696.2005
             </a>
             <br />
             <a
-              href="mailto:studio@cenmill.com"
+              href="mailto:contact@cenmill.com"
               className="transition-colors hover:text-neutral-900"
             >
-              studio@cenmill.com
+              contact@cenmill.com
             </a>
           </div>
           <nav aria-label="Footer">
@@ -43,7 +43,7 @@ export default function Footer() {
           </nav>
         </div>
         <p className="mt-10 text-xs text-neutral-400">
-          © {new Date().getFullYear()} Cenmill Architecture Studio. All rights reserved.
+          © {new Date().getFullYear()} Cenmill, Inc. All rights reserved.
         </p>
       </div>
     </footer>

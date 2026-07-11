@@ -58,19 +58,21 @@ export default async function ProjectPage({ params }: Props) {
         {project.fullDescription}
       </p>
 
-      <div className="mt-16 space-y-8">
-        {project.gallery.map((image, index) => (
-          <div key={image} className="relative aspect-3/2 w-full bg-neutral-100">
+      {project.gallery.length > 0 && (
+        <div className="mt-16 space-y-8">
+          {project.gallery.map((image, index) => (
             <Image
+              key={image}
               src={assetPath(image)}
               alt={`${project.title} — photo ${index + 1}`}
-              fill
+              width={1600}
+              height={1067}
               sizes="(min-width: 1152px) 1088px, 100vw"
-              className="object-cover"
+              className="h-auto w-full bg-neutral-100"
             />
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
       <nav
         aria-label="Adjacent projects"

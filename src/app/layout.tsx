@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s — Cenmill",
   },
   description:
-    "Cenmill is an architecture studio designing residential and mixed-use buildings with a focus on urban housing.",
+    "Cenmill is a design, build, and development firm creating residential and commercial projects across the greater Los Angeles area.",
 };
 
 export default function RootLayout({

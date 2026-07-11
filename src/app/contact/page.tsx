@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Contact the Cenmill architecture studio.",
+  description: "Contact Cenmill, Inc. — design, build, and development firm in Glendale, California.",
 };
 
 export default function ContactPage() {
@@ -15,9 +15,11 @@ export default function ContactPage() {
             Studio
           </h2>
           <address className="mt-2 not-italic">
-            1040 Tenth Avenue, Suite 300
+            Cenmill, Inc.
             <br />
-            San Diego, CA 92101
+            2551 North Verdugo Road
+            <br />
+            Glendale, California
           </address>
         </section>
         <section>
@@ -26,25 +28,19 @@ export default function ContactPage() {
           </h2>
           <p className="mt-2">
             <a
-              href="tel:+16195550148"
+              href="tel:+18186962005"
               className="transition-colors hover:text-neutral-900"
             >
-              +1 (619) 555-0148
+              818.696.2005
             </a>
             <br />
             <a
-              href="mailto:studio@cenmill.com"
+              href="mailto:contact@cenmill.com"
               className="underline decoration-neutral-300 underline-offset-4 transition-colors hover:text-neutral-900"
             >
-              studio@cenmill.com
+              contact@cenmill.com
             </a>
           </p>
-        </section>
-        <section>
-          <h2 className="text-sm uppercase tracking-[0.2em] text-neutral-400">
-            Hours
-          </h2>
-          <p className="mt-2">Monday – Friday, 9:00 – 18:00</p>
         </section>
       </div>
     </article>
