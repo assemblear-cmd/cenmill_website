@@ -33,27 +33,26 @@ export default function Header() {
           Cenmill
         </Link>
 
-        <nav aria-label="Main" className="hidden md:block">
-          <ul className="flex items-center gap-10">
-            {links.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  aria-current={isActive(pathname, link.href) ? "page" : undefined}
-                  className={`text-sm uppercase tracking-[0.2em] transition-colors hover:text-neutral-900 dark:hover:text-white ${
-                    isActive(pathname, link.href)
-                      ? "text-neutral-900 dark:text-white"
-                      : "text-neutral-400 dark:text-neutral-500"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className="flex items-center gap-1">
+        <div className="ml-auto flex items-center gap-1 md:gap-14">
+          <nav aria-label="Main" className="hidden md:block">
+            <ul className="flex items-center gap-10">
+              {links.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    aria-current={isActive(pathname, link.href) ? "page" : undefined}
+                    className={`text-sm uppercase tracking-[0.2em] transition-colors hover:text-neutral-900 dark:hover:text-white ${
+                      isActive(pathname, link.href)
+                        ? "text-neutral-900 dark:text-white"
+                        : "text-neutral-400 dark:text-neutral-500"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
           <ThemeToggle />
           <button
             type="button"

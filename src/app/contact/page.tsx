@@ -17,7 +17,7 @@ export default function ContactPage() {
           action="mailto:contact@cenmill.com"
           method="post"
           encType="text/plain"
-          className="space-y-7"
+          className="flex h-full flex-col gap-7"
         >
           <div className="grid gap-7 sm:grid-cols-2">
             <label className="block text-xs uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
@@ -68,13 +68,13 @@ export default function ContactPage() {
           </label>
           <button
             type="submit"
-            className="border border-neutral-900 bg-neutral-900 px-8 py-3 text-xs uppercase tracking-[0.2em] text-white transition-colors hover:bg-transparent hover:text-neutral-900 dark:border-neutral-100 dark:bg-neutral-100 dark:text-neutral-950 dark:hover:bg-transparent dark:hover:text-white"
+            className="mt-auto self-start border border-neutral-900 bg-neutral-900 px-8 py-3 text-xs uppercase tracking-[0.2em] text-white transition-colors hover:bg-transparent hover:text-neutral-900 dark:border-neutral-100 dark:bg-neutral-100 dark:text-neutral-950 dark:hover:bg-transparent dark:hover:text-white"
           >
             Submit
           </button>
         </form>
 
-        <div className="space-y-10 leading-relaxed text-neutral-700 dark:text-neutral-300">
+        <div className="flex h-full flex-col gap-10 leading-relaxed text-neutral-700 dark:text-neutral-300">
           <section>
             <h2 className="text-sm uppercase tracking-[0.2em] text-neutral-400 dark:text-neutral-500">
               Mailing Address
@@ -101,7 +101,7 @@ export default function ContactPage() {
               </a>
             </p>
           </section>
-          <div className="aspect-4/3 overflow-hidden bg-neutral-100 dark:bg-neutral-900">
+          <div className="mt-auto aspect-4/3 overflow-hidden bg-neutral-100 dark:bg-neutral-900">
             <iframe
               title="Cenmill studio location"
               src="https://www.google.com/maps?q=2551+North+Verdugo+Road,+Glendale,+California&output=embed"
