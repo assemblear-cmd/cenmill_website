@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cenmill — сайт-портфолио архитектурной студии
 
-## Getting Started
+Минималистичный статический сайт-портфолио: Next.js (App Router, статический экспорт), TypeScript, Tailwind CSS. Без UI-библиотек и CSS-in-JS — проект совместим с визуальным редактором [Onlook](https://onlook.com).
 
-First, run the development server:
+## Запуск локально
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Сайт откроется на [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Продакшн-сборка (статический экспорт в папку `out/`):
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+## Как добавить новый проект
 
-To learn more about Next.js, take a look at the following resources:
+1. Создайте папку `public/projects/<slug>/` и положите туда фотографии (jpg, png, webp, svg).
+2. Добавьте объект в массив `projects` в файле [`src/data/projects.ts`](src/data/projects.ts):
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```ts
+{
+  slug: "new-project",                 // URL: /projects/new-project
+  title: "New Project",
+  year: 2026,
+  location: "City, State",
+  shortDescription: "Одна фраза для карточки и метатегов.",
+  fullDescription: "Полное описание на странице проекта.",
+  coverImage: "/projects/new-project/cover.jpg",
+  gallery: [
+    "/projects/new-project/01.jpg",
+    "/projects/new-project/02.jpg",
+  ],
+},
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Больше ничего не нужно: страница `/projects/<slug>` генерируется автоматически (`generateStaticParams`), карточка появляется в сетке, ссылки «Previous / Next project» подхватывают порядок массива.
 
-## Deploy on Vercel
+## Деплой на GitHub Pages
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Каждый push в ветку `main` запускает workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml): сборка, экспорт в `out/` и публикация через `actions/deploy-pages`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Один раз включите Pages в настройках репозитория: **Settings → Pages → Source: GitHub Actions**.
+
+`basePath`/`assetPrefix` (`/cenmill_website`) применяются только при сборке в CI (по переменной `GITHUB_ACTIONS`); локально и в Onlook сайт работает от корня домена.
+
+## Подключение к Onlook
+
+1. Запушьте репозиторий на GitHub (уже настроен remote `assemblear-cmd/cenmill_website`).
+2. На [onlook.com](https://onlook.com) выберите **Import → GitHub repository** и укажите этот репозиторий.
+3. Onlook сам поднимет dev-сервер и позволит редактировать страницы визуально — проект использует чистый Next.js + Tailwind (utility-классы), что Onlook понимает без адаптации.
+
+## Структура
+
+```
+src/
+  app/            — страницы (App Router): /, /projects, /projects/[slug], /about, /contact, 404
+  components/     — Header, Footer, ProjectCard, ProjectsGrid
+  data/projects.ts — все данные проектов (единственный источник)
+  lib/paths.ts    — префикс basePath для изображений
+public/projects/  — фотографии проектов (сейчас SVG-заглушки)
+```
