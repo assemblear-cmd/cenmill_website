@@ -24,8 +24,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} antialiased`}>
-      <body className="flex min-h-screen flex-col bg-white font-sans font-light text-neutral-900">
+    <html lang="en" className={`${inter.variable} antialiased`} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');var d=t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d)}catch(e){}})()`,
+          }}
+        />
+      </head>
+      <body className="flex min-h-screen flex-col bg-white font-sans font-light text-neutral-900 transition-colors dark:bg-neutral-950 dark:text-neutral-100">
         <Header />
         <main className="mx-auto w-full max-w-6xl flex-1 px-6 pb-24 pt-10 sm:px-8">
           {children}

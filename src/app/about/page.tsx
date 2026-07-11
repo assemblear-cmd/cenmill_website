@@ -10,7 +10,7 @@ export default function AboutPage() {
   return (
     <article className="max-w-2xl">
       <h1 className="text-2xl font-light uppercase tracking-[0.2em]">About</h1>
-      <div className="mt-8 space-y-6 leading-relaxed text-neutral-700">
+      <div className="mt-8 space-y-6 leading-relaxed text-neutral-700 dark:text-neutral-300">
         <p>
           Cenmill is a design, build, and development firm serving the greater
           Los Angeles area. Founded by Artem Golestian in 2009, the studio

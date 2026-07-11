@@ -34,7 +34,7 @@ export default async function ProjectPage({ params }: Props) {
 
   return (
     <article>
-      <div className="relative aspect-3/2 w-full bg-neutral-100">
+      <div className="relative aspect-3/2 w-full bg-neutral-100 dark:bg-neutral-900">
         <Image
           src={assetPath(project.coverImage)}
           alt={`${project.title} — ${project.location}`}
@@ -49,39 +49,30 @@ export default async function ProjectPage({ params }: Props) {
         <h1 className="text-2xl font-light uppercase tracking-[0.2em]">
           {project.title}
         </h1>
-        <p className="mt-2 text-sm text-neutral-500">
+        <p className="mt-2 text-sm text-neutral-500 dark:text-neutral-400">
           {project.year} — {project.location}
         </p>
       </header>
 
-      <p className="mt-8 max-w-2xl leading-relaxed text-neutral-700">
+      <p className="mt-8 max-w-2xl leading-relaxed text-neutral-700 dark:text-neutral-300">
         {project.fullDescription}
       </p>
 
-      {project.gallery.length > 0 && (
-        <div className="mt-16 space-y-8">
-          {project.gallery.map((image, index) => (
-            <Image
-              key={image}
-              src={assetPath(image)}
-              alt={`${project.title} — photo ${index + 1}`}
-              width={1600}
-              height={1067}
-              sizes="(min-width: 1152px) 1088px, 100vw"
-              className="h-auto w-full bg-neutral-100"
-            />
-          ))}
-        </div>
-      )}
+      <Link
+        href={`/projects/${project.slug}/gallery`}
+        className="mt-10 inline-block border-b border-neutral-400 pb-1 text-sm uppercase tracking-[0.18em] transition-colors hover:border-neutral-900 dark:border-neutral-600 dark:hover:border-white"
+      >
+        View gallery →
+      </Link>
 
       <nav
         aria-label="Adjacent projects"
-        className="mt-20 flex items-baseline justify-between border-t border-neutral-200 pt-8 text-sm"
+        className="mt-20 flex items-baseline justify-between border-t border-neutral-200 pt-8 text-sm dark:border-neutral-800"
       >
         {previous ? (
           <Link
             href={`/projects/${previous.slug}`}
-            className="text-neutral-500 transition-colors hover:text-neutral-900"
+            className="text-neutral-500 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
           >
             ← Previous project
           </Link>
@@ -91,7 +82,7 @@ export default async function ProjectPage({ params }: Props) {
         {next ? (
           <Link
             href={`/projects/${next.slug}`}
-            className="text-neutral-500 transition-colors hover:text-neutral-900"
+            className="text-neutral-500 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
           >
             Next project →
           </Link>
