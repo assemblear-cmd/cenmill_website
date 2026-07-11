@@ -42,9 +42,9 @@ npm run build
 
 ## Деплой на GitHub Pages
 
-Каждый push в ветку `main` запускает workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml): сборка, экспорт в `out/` и публикация через `actions/deploy-pages`.
+Каждый push в ветку `main` запускает workflow [`.github/workflows/nextjs.yml`](.github/workflows/nextjs.yml) (стандартный workflow GitHub для Next.js): сборка, экспорт в `out/` и публикация через `actions/deploy-pages`.
 
-Один раз включите Pages в настройках репозитория: **Settings → Pages → Source: GitHub Actions**.
+Pages должен быть включён в настройках репозитория: **Settings → Pages → Source: GitHub Actions**.
 
 `basePath`/`assetPrefix` (`/cenmill_website`) применяются только при сборке в CI (по переменной `GITHUB_ACTIONS`); локально и в Onlook сайт работает от корня домена.
 
