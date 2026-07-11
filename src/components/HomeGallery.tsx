@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,6 +11,9 @@ export type Slide = {
   location: string;
 };
 
+// Minimum horizontal travel (px) before a touch is treated as a swipe.
+const SWIPE_THRESHOLD = 40;
+
 export default function HomeGallery({
   slides,
   interval = 4000,
@@ -19,6 +22,8 @@ export default function HomeGallery({
   interval?: number;
 }) {
   const [index, setIndex] = useState(0);
+  // Bumped on any manual navigation so the auto-advance timer restarts.
+  const [interactionCount, setInteractionCount] = useState(0);
 
   useEffect(() => {
     if (slides.length <= 1) return;
@@ -26,17 +31,61 @@ export default function HomeGallery({
       setIndex((i) => (i + 1) % slides.length);
     }, interval);
     return () => clearInterval(id);
-  }, [slides.length, interval]);
+  }, [slides.length, interval, interactionCount]);
+
+  const go = useCallback(
+    (direction: number) => {
+      setIndex((i) => (i + direction + slides.length) % slides.length);
+      setInteractionCount((c) => c + 1);
+    },
+    [slides.length],
+  );
+
+  const goTo = useCallback((target: number) => {
+    setIndex(target);
+    setInteractionCount((c) => c + 1);
+  }, []);
+
+  const touchStartX = useRef(0);
+  const touchDeltaX = useRef(0);
+  const swiped = useRef(false);
+
+  function onTouchStart(e: React.TouchEvent) {
+    touchStartX.current = e.touches[0].clientX;
+    touchDeltaX.current = 0;
+    swiped.current = false;
+  }
+
+  function onTouchMove(e: React.TouchEvent) {
+    touchDeltaX.current = e.touches[0].clientX - touchStartX.current;
+    if (Math.abs(touchDeltaX.current) > 10) swiped.current = true;
+  }
+
+  function onTouchEnd() {
+    if (Math.abs(touchDeltaX.current) > SWIPE_THRESHOLD) {
+      go(touchDeltaX.current < 0 ? 1 : -1);
+    }
+  }
 
   return (
     <section aria-label="Featured projects">
-      <div className="relative aspect-4/3 w-full overflow-hidden bg-neutral-100 sm:aspect-16/9 dark:bg-neutral-900">
+      <div
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+        className="relative aspect-4/3 w-full touch-pan-y overflow-hidden bg-neutral-100 select-none sm:aspect-16/9 dark:bg-neutral-900"
+      >
         {slides.map((slide, i) => (
           <Link
             key={slide.href}
             href={slide.href}
             aria-hidden={i !== index}
             tabIndex={i === index ? 0 : -1}
+            draggable={false}
+            onClick={(e) => {
+              // Don't follow the link when the touch was a swipe.
+              if (swiped.current) e.preventDefault();
+            }}
             className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
               i === index ? "opacity-100" : "pointer-events-none opacity-0"
             }`}
@@ -46,6 +95,7 @@ export default function HomeGallery({
               alt={`${slide.title} — ${slide.location}`}
               fill
               priority={i === 0}
+              draggable={false}
               sizes="(min-width: 1152px) 1088px, 100vw"
               className="object-cover"
             />
@@ -65,7 +115,7 @@ export default function HomeGallery({
               type="button"
               aria-label={`Show ${slide.title}`}
               aria-current={i === index ? "true" : undefined}
-              onClick={() => setIndex(i)}
+              onClick={() => goTo(i)}
               className={`h-2 w-2 rounded-full transition-colors ${
                 i === index ? "bg-white" : "bg-white/40 hover:bg-white/70"
               }`}

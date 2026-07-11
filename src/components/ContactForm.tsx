@@ -7,7 +7,7 @@ const inputClass =
 const labelClass =
   "block text-xs uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400";
 
-export default function ContactForm() {
+export default function ContactForm({ compact = false }: { compact?: boolean }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -16,11 +16,74 @@ export default function ContactForm() {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const body = `Name: ${firstName} ${lastName}\nEmail: ${email}\n\n${message}`;
+    const name = `${firstName} ${lastName}`.trim();
+    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
     const href = `mailto:contact@cenmill.com?subject=${encodeURIComponent(
-      subject,
+      subject || "Website enquiry",
     )}&body=${encodeURIComponent(body)}`;
     window.location.href = href;
+  }
+
+  if (compact) {
+    return (
+      <form
+        onSubmit={handleSubmit}
+        className="mx-auto mt-8 max-w-md space-y-4 text-left"
+      >
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label htmlFor="c-name" className={labelClass}>
+              Name
+            </label>
+            <input
+              id="c-name"
+              name="name"
+              type="text"
+              required
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              className={inputClass}
+            />
+          </div>
+          <div>
+            <label htmlFor="c-email" className={labelClass}>
+              Email
+            </label>
+            <input
+              id="c-email"
+              name="email"
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className={inputClass}
+            />
+          </div>
+        </div>
+
+        <div>
+          <label htmlFor="c-message" className={labelClass}>
+            Message
+          </label>
+          <textarea
+            id="c-message"
+            name="message"
+            required
+            rows={4}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            className={`${inputClass} resize-y`}
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="w-full bg-neutral-900 px-8 py-3 text-xs uppercase tracking-[0.25em] text-white transition-colors hover:bg-neutral-700 sm:w-auto dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-neutral-300"
+        >
+          Send message
+        </button>
+      </form>
+    );
   }
 
   return (

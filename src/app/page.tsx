@@ -1,5 +1,6 @@
 import Link from "next/link";
 import HomeGallery from "@/components/HomeGallery";
+import ContactForm from "@/components/ContactForm";
 import { projects } from "@/data/projects";
 import { assetPath } from "@/lib/paths";
 
@@ -48,14 +49,7 @@ export default function HomePage() {
             contact@cenmill.com
           </a>
         </p>
-        <div className="mt-8">
-          <Link
-            href="/contact"
-            className="text-sm uppercase tracking-[0.2em] text-neutral-500 underline decoration-neutral-300 underline-offset-4 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:decoration-neutral-700 dark:hover:text-neutral-100"
-          >
-            Get in touch →
-          </Link>
-        </div>
+        <ContactForm compact />
       </section>
     </div>
   );
