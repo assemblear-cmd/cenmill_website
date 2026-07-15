@@ -40,6 +40,7 @@ export const carwashes: Carwash[] = [
       "/carwashes/south-gate/04.jpg",
       "/carwashes/south-gate/05.jpg",
       "/carwashes/south-gate/06.jpg",
+      "/carwashes/south-gate/07.jpg",
     ],
   },
   {
