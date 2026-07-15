@@ -20,7 +20,17 @@ export const carwashes: Carwash[] = [
   { slug: "montebello", street: "8016 Slauson Ave", city: "Montebello" },
   { slug: "bellflower", street: "15118 Lakewood Blvd", city: "Bellflower" },
   { slug: "whittier", street: "16010 Whittier Blvd", city: "Whittier" },
-  { slug: "carson", street: "20651 Avalon Blvd", city: "Carson" },
+  {
+    slug: "carson",
+    street: "20651 Avalon Blvd",
+    city: "Carson",
+    coverImage: "/carwashes/carson/01.jpg",
+    gallery: [
+      "/carwashes/carson/01.jpg",
+      "/carwashes/carson/02.jpg",
+      "/carwashes/carson/03.jpg",
+    ],
+  },
   {
     slug: "740-washington",
     street: "740 Washington Blvd",
