@@ -54,7 +54,6 @@ export const carwashes: Carwash[] = [
     gallery: [
       "/carwashes/carson/01.jpg",
       "/carwashes/carson/02.jpg",
-      "/carwashes/carson/03.jpg",
     ],
   },
   {
