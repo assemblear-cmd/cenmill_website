@@ -14,7 +14,20 @@ export type Carwash = {
  * /carwashes/<slug>/gallery. Paths are relative to /public and start with "/".
  */
 export const carwashes: Carwash[] = [
-  { slug: "fullerton", street: "520 S Euclid St", city: "Fullerton" },
+  {
+    slug: "fullerton",
+    street: "520 S Euclid St",
+    city: "Fullerton",
+    coverImage: "/carwashes/fullerton/02.jpg",
+    gallery: [
+      "/carwashes/fullerton/01.jpg",
+      "/carwashes/fullerton/02.jpg",
+      "/carwashes/fullerton/03.jpg",
+      "/carwashes/fullerton/04.jpg",
+      "/carwashes/fullerton/05.jpg",
+      "/carwashes/fullerton/06.jpg",
+    ],
+  },
   { slug: "south-gate", street: "3900 Firestone Blvd", city: "South Gate" },
   { slug: "cudahy", street: "7700 Atlantic Ave", city: "Cudahy" },
   { slug: "montebello", street: "8016 Slauson Ave", city: "Montebello" },
