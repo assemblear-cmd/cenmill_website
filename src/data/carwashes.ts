@@ -3,13 +3,15 @@ export type Carwash = {
   street: string;
   city: string;
   coverImage?: string;
+  gallery?: string[];
 };
 
 /**
  * Express Car Wash locations, shown as the "Carwashes" subcategory on /projects.
- * A tile with no `coverImage` renders a neutral placeholder. To show a photo,
- * drop a cover image at /public/carwashes/<slug>/cover.jpg (any web format) and
- * set `coverImage` to that path. Paths are relative to /public and start with "/".
+ * A tile with no `coverImage` renders a neutral placeholder. To show photos,
+ * drop images at /public/carwashes/<slug>/ and set `coverImage` (the tile) and
+ * optionally `gallery` (extra photos). A location with a `gallery` links to
+ * /carwashes/<slug>/gallery. Paths are relative to /public and start with "/".
  */
 export const carwashes: Carwash[] = [
   { slug: "fullerton", street: "520 S Euclid St", city: "Fullerton" },
@@ -19,4 +21,20 @@ export const carwashes: Carwash[] = [
   { slug: "bellflower", street: "15118 Lakewood Blvd", city: "Bellflower" },
   { slug: "whittier", street: "16010 Whittier Blvd", city: "Whittier" },
   { slug: "carson", street: "20651 Avalon Blvd", city: "Carson" },
+  {
+    slug: "740-washington",
+    street: "740 Washington Blvd",
+    city: "Montebello",
+    coverImage: "/carwashes/740-washington/01.jpg",
+    gallery: [
+      "/carwashes/740-washington/01.jpg",
+      "/carwashes/740-washington/02.jpg",
+      "/carwashes/740-washington/03.jpg",
+      "/carwashes/740-washington/04.jpg",
+    ],
+  },
 ];
+
+export function getCarwash(slug: string): Carwash | undefined {
+  return carwashes.find((c) => c.slug === slug);
+}
