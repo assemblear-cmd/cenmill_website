@@ -50,8 +50,9 @@ export const carwashes: Carwash[] = [
     slug: "carson",
     street: "20651 Avalon Blvd",
     city: "Carson",
-    coverImage: "/carwashes/carson/01.jpg",
+    coverImage: "/carwashes/carson/03.jpg",
     gallery: [
+      "/carwashes/carson/03.jpg",
       "/carwashes/carson/01.jpg",
       "/carwashes/carson/02.jpg",
     ],
