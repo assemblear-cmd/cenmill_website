@@ -57,7 +57,17 @@ export const carwashes: Carwash[] = [
       "/carwashes/cudahy/07.jpg",
     ],
   },
-  { slug: "montebello", street: "8016 Slauson Ave", city: "Montebello" },
+  {
+    slug: "montebello",
+    street: "8016 Slauson Ave",
+    city: "Montebello",
+    coverImage: "/carwashes/montebello/01.jpg",
+    gallery: [
+      "/carwashes/montebello/01.jpg",
+      "/carwashes/montebello/02.jpg",
+      "/carwashes/montebello/03.jpg",
+    ],
+  },
   { slug: "bellflower", street: "15118 Lakewood Blvd", city: "Bellflower" },
   { slug: "whittier", street: "16010 Whittier Blvd", city: "Whittier" },
   {
