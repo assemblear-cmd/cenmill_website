@@ -37,7 +37,6 @@ export default async function GalleryPage({ params }: Props) {
     src: assetPath(src),
     alt: `${project.title} — photo ${index + 1}`,
   }));
-  const hasStickyBackLink = project.slug === "verdugo";
 
   return (
     <article>
@@ -50,28 +49,15 @@ export default async function GalleryPage({ params }: Props) {
             Gallery — {project.location}
           </p>
         </div>
-        {hasStickyBackLink ? (
-          <div className="fixed right-0 top-28 z-40 w-24">
-            <Link
-              href={`/projects/${project.slug}`}
-              className="block w-full border border-r-0 border-neutral-200 bg-white/95 px-5 py-3 text-center text-sm text-neutral-600 shadow-sm backdrop-blur-sm transition-colors hover:text-neutral-900 dark:border-neutral-800 dark:bg-neutral-950/95 dark:text-neutral-300 dark:hover:text-neutral-100"
-            >
-              Back
-            </Link>
-          </div>
-        ) : (
-          <Link
-            href={`/projects/${project.slug}`}
-            className="shrink-0 text-sm text-neutral-500 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
-          >
-            ← Back to project
-          </Link>
-        )}
+        <Link
+          href={`/projects/${project.slug}`}
+          className="shrink-0 text-sm text-neutral-500 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+        >
+          ← Back to project
+        </Link>
       </header>
 
-      <div className={hasStickyBackLink ? "pr-24" : undefined}>
-        <GalleryViewer images={images} title={project.title} />
-      </div>
+      <GalleryViewer images={images} title={project.title} />
     </article>
   );
 }
