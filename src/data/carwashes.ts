@@ -75,7 +75,21 @@ export const carwashes: Carwash[] = [
       "/carwashes/montebello/10.jpg",
     ],
   },
-  { slug: "bellflower", street: "15118 Lakewood Blvd", city: "Bellflower" },
+  {
+    slug: "bellflower",
+    street: "15118 Lakewood Blvd",
+    city: "Bellflower",
+    coverImage: "/carwashes/bellflower/01.jpg",
+    gallery: [
+      "/carwashes/bellflower/01.jpg",
+      "/carwashes/bellflower/02.jpg",
+      "/carwashes/bellflower/03.jpg",
+      "/carwashes/bellflower/04.jpg",
+      "/carwashes/bellflower/05.jpg",
+      "/carwashes/bellflower/06.jpg",
+      "/carwashes/bellflower/07.jpg",
+    ],
+  },
   { slug: "whittier", street: "16010 Whittier Blvd", city: "Whittier" },
   {
     slug: "carson",
