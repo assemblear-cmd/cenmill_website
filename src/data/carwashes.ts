@@ -90,7 +90,19 @@ export const carwashes: Carwash[] = [
       "/carwashes/bellflower/07.jpg",
     ],
   },
-  { slug: "whittier", street: "16010 Whittier Blvd", city: "Whittier" },
+  {
+    slug: "whittier",
+    street: "16010 Whittier Blvd",
+    city: "Whittier",
+    coverImage: "/carwashes/whittier/01.jpg",
+    gallery: [
+      "/carwashes/whittier/01.jpg",
+      "/carwashes/whittier/02.jpg",
+      "/carwashes/whittier/03.jpg",
+      "/carwashes/whittier/04.jpg",
+      "/carwashes/whittier/05.jpg",
+    ],
+  },
   {
     slug: "carson",
     street: "20651 Avalon Blvd",
