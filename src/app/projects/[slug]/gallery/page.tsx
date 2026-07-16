@@ -51,15 +51,13 @@ export default async function GalleryPage({ params }: Props) {
           </p>
         </div>
         {hasStickyBackLink ? (
-          <div className="pointer-events-none fixed inset-x-0 top-28 z-40">
-            <div className="mx-auto flex w-full max-w-6xl justify-end px-6 sm:px-8">
-              <Link
-                href={`/projects/${project.slug}`}
-                className="pointer-events-auto rounded-full border border-neutral-200 bg-white/95 px-4 py-2 text-sm text-neutral-600 shadow-sm backdrop-blur-sm transition-colors hover:text-neutral-900 dark:border-neutral-800 dark:bg-neutral-950/95 dark:text-neutral-300 dark:hover:text-neutral-100"
-              >
-                Back
-              </Link>
-            </div>
+          <div className="fixed right-0 top-28 z-40 w-24">
+            <Link
+              href={`/projects/${project.slug}`}
+              className="block w-full border border-r-0 border-neutral-200 bg-white/95 px-5 py-3 text-center text-sm text-neutral-600 shadow-sm backdrop-blur-sm transition-colors hover:text-neutral-900 dark:border-neutral-800 dark:bg-neutral-950/95 dark:text-neutral-300 dark:hover:text-neutral-100"
+            >
+              Back
+            </Link>
           </div>
         ) : (
           <Link
@@ -71,7 +69,9 @@ export default async function GalleryPage({ params }: Props) {
         )}
       </header>
 
-      <GalleryViewer images={images} title={project.title} />
+      <div className={hasStickyBackLink ? "pr-24" : undefined}>
+        <GalleryViewer images={images} title={project.title} />
+      </div>
     </article>
   );
 }
